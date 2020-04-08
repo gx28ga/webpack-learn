@@ -6,8 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: {
-        index: "./src/index.js",
-        search: "./src/search.js"
+        search: "./src/search/search.js"
     },
     output: {
         path: path.join(__dirname, "dist"),
@@ -42,6 +41,13 @@ module.exports = {
                                 })
                             ]
                         }
+                    },
+                    {
+                        loader: "px2rem-loader",
+                        options: {
+                            remUnit: 75,
+                            remPrecision: 8
+                        }
                     }
                 ]
             },
@@ -70,27 +76,13 @@ module.exports = {
             cssProcessor: require("cssnano")
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, "src/index.html"),
-            filename: "index.html",
-            chunks: ["index"],
-            inject: true,
-            minify: {
-                html5: true,
-                collapseWhitespace: true,
-                preserveLineBreaks: false,
-                minifyCSS: true,
-                minifyJS: true,
-                removeComments: false
-            }
-        }),
-        new HtmlWebpackPlugin({
-            template: path.join(__dirname, "src/search.html"),
+            template: path.join(__dirname, "src/search/index.html"),
             filename: "search.html",
             chunks: ["search"],
             inject: true,
             minify: {
                 html5: true,
-                collapseWhiteSpace: true,
+                collapseWhitespace: true,
                 preserveLineBreaks: false,
                 minifyCSS: true,
                 minifyJS: true,

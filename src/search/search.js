@@ -1,7 +1,7 @@
 "use strict";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./search.less"
+import "../search.less"
 import image from "./images/image.jpg"
 class Search extends React.Component{
     render() {
